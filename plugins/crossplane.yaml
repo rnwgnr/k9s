@@ -12,9 +12,9 @@ plugins:
     args:
       - -c
       - 'NS="$NAMESPACE"; if [ "$NS" = "-" ] || [ -z "$NS" ]; then crossplane resource trace -c "$CONTEXT" "${RESOURCE_NAME}.${RESOURCE_GROUP}" "$NAME" -o wide | less -K; else crossplane resource trace -c "$CONTEXT" -n "$NS" "${RESOURCE_NAME}.${RESOURCE_GROUP}" "$NAME" -o wide | less -K; fi'
-  # crossplane-watch requires 'crossplane' cli and 'viddy' binaries installed
+  # crossplane-watch requires 'crossplane' cli
   crossplane-watch:
-    shortCut: w
+    shortCut: Shift-W
     confirm: false
     description: "Crossplane Watch"
     scopes:
@@ -23,5 +23,4 @@ plugins:
     background: false
     args:
       - -c
-      - 'NS="$NAMESPACE"; if [ "$NS" = "-" ] || [ -z "$NS" ]; then crossplane resource trace -c "$CONTEXT" "${RESOURCE_NAME}.${RESOURCE_GROUP}" "$NAME" -o wide -w; else crossplane resource trace -c "$CONTEXT" -n "$NS" "${RESOURCE_NAME}.${RESOURCE_GROUP}" "$NAME" -o wide -w; fi'
-
+      - 'NS="$NAMESPACE"; if [ "$NS" = "-" ] || [ -z "$NS" ]; then crossplane resource trace -c "$CONTEXT" "${RESOURCE_NAME}.${RESOURCE_GROUP}" "$NAME" -o wide -w --watch; else crossplane resource trace -c "$CONTEXT" -n "$NS" "${RESOURCE_NAME}.${RESOURCE_GROUP}" "$NAME" -o wide -w --watch; fi'
